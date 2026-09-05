@@ -9,386 +9,42 @@
 
   <link rel="stylesheet" href="css/style.css" />
 
-<style id="dark-theme-and-events">
-:root{
-  --dark-bg:#070b14;
-  --dark-bg-2:#0b1220;
-  --dark-card:#0e1727;
-  --dark-card-2:#111d30;
-  --hero-blue:#1f5c99;
-  --hero-blue-bright:#4da3ff;
-  --hero-orange:#f97316;
-  --hero-orange-bright:#ff9a3d;
-  --hero-white:#f8fafc;
-  --dark-text:#e8eef7;
-  --dark-sub:#9aa9bd;
-  --dark-border:rgba(255,255,255,.09);
-}
+<style>
+:root{--lrbg:#060a12;--lrsoft:#0b1220;--lrwhite:#f8fbff;--lrmuted:#93a3b8;--lrblue:#1f5c99;--lrblue2:#4da3ff;--lrorange:#f97316;--lrborder:rgba(255,255,255,.1)}
+html{scroll-behavior:smooth;background:var(--lrbg)}
+body{background:var(--lrbg)!important;color:#dce6f2!important;overflow-x:hidden}
+body>section:not(.hero){background:linear-gradient(180deg,#080d17,#060a12)!important}
+body>section.section-alt{background:linear-gradient(180deg,#0b1320,#070c15)!important}
+#model.closing-wrap{min-height:auto!important;padding:100px 6vw!important;background:#080d17!important}
+#apply.apply-section{padding:100px 6vw!important;background:#060a12!important}
+.verse-card,.model-item,.apply-form,.apply-intro{background:rgba(13,21,35,.86)!important;border-color:var(--lrborder)!important}
+.slide-body p,.text-block p,.closing p,.apply-intro p,.supports,.lede{color:var(--lrmuted)!important}
+h1,h2,h3,h4{color:var(--lrwhite)!important} footer{background:#04070d!important;border-top:1px solid var(--lrborder)!important}
+.apply-form input,.apply-form select,.apply-form textarea{background:#080f1b!important;color:#fff!important;border-color:var(--lrborder)!important}
 
-/* Overall page: dark, premium and visually connected to the hero */
-html{
-  scroll-behavior:smooth;
-  background:var(--dark-bg);
-}
+/* Event poster switches with default hero automatically */
+.hero-default-visual{display:block}.hero-event-poster{display:none;position:relative;overflow:hidden;border-radius:20px;border:1px solid var(--lrborder);box-shadow:0 30px 90px rgba(0,0,0,.5);cursor:pointer}
+.hero-event-poster img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}.hero-poster-overlay{position:absolute;inset:auto 0 0;padding:55px 24px 22px;background:linear-gradient(transparent,rgba(4,8,15,.96));color:#fff}
+.hero-poster-overlay span{display:block;color:#ffad70;font-size:.68rem;font-weight:900;letter-spacing:.15em}.hero-poster-overlay strong{display:block;font-size:1.35rem;margin:7px 0}.hero-event-active .hero-default-visual{display:none}.hero-event-active .hero-event-poster{display:block;animation:visualEnter .9s both}
 
-body{
-  background:
-    radial-gradient(circle at 8% 18%, rgba(31,92,153,.13), transparent 28%),
-    radial-gradient(circle at 92% 55%, rgba(249,115,22,.08), transparent 26%),
-    var(--dark-bg) !important;
-  color:var(--dark-text) !important;
-}
+/* Events */
+.events-section{position:relative;padding:110px 6vw;background:radial-gradient(circle at 10% 10%,rgba(31,92,153,.14),transparent 28%),radial-gradient(circle at 90% 80%,rgba(249,115,22,.09),transparent 25%),#070c15!important}
+.events-wrap{width:min(1180px,100%);margin:auto}.events-heading{text-align:center;max-width:700px;margin:0 auto 48px}.events-heading h2{font-size:clamp(2.4rem,5vw,4.2rem);margin:8px 0}.events-heading p,.events-empty p{color:var(--lrmuted)}
+.event-featured{display:grid;grid-template-columns:.8fr 1.2fr;overflow:hidden;border:1px solid var(--lrborder);border-radius:26px;background:linear-gradient(135deg,#101a2b,#070c15);box-shadow:0 28px 90px rgba(0,0,0,.35)}
+.event-featured-poster{min-height:450px}.event-featured-poster img{width:100%;height:100%;object-fit:cover}.event-featured-content{padding:clamp(28px,5vw,60px);display:flex;flex-direction:column;justify-content:center}.event-kicker{color:#ffad70;font-size:.7rem;font-weight:900;letter-spacing:.15em}.event-featured h3{font-size:clamp(2rem,4vw,3.5rem);margin:12px 0}.event-welcome{color:var(--lrmuted);line-height:1.85}.event-details{display:flex;flex-wrap:wrap;gap:9px;margin:18px 0}.event-details span{padding:10px 12px;border:1px solid var(--lrborder);border-radius:10px;color:#cbd6e4}
+.event-countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0 26px}.count-box{padding:13px 6px;text-align:center;border:1px solid var(--lrborder);border-radius:14px;background:rgba(31,92,153,.12)}.count-box strong{display:block;font-size:1.7rem;color:#fff}.count-box small{color:var(--lrmuted);font-size:.62rem}
+.event-actions{display:flex;gap:12px;flex-wrap:wrap}.event-register-btn,.event-view-btn{padding:14px 20px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;font-weight:800}.event-register-btn{background:linear-gradient(90deg,var(--lrorange),#f59e0b);color:#fff}.event-view-btn{background:rgba(31,92,153,.22);border:1px solid rgba(77,163,255,.3);color:#dcecff}.event-register-btn:hover,.event-view-btn:hover{transform:translateY(-3px)}
+.events-empty{padding:60px 20px;text-align:center;border:1px dashed var(--lrborder);border-radius:24px}.events-empty>div{font-size:2rem;color:var(--lrorange)}
+.past-events-section{margin-top:70px}.past-events-head{display:flex;justify-content:space-between;align-items:end}.past-events-head h3{margin:6px 0;font-size:2rem}.slider-controls button{width:42px;height:42px;border-radius:50%;border:1px solid var(--lrborder);background:#101a2b;color:#fff;cursor:pointer}.past-slider-window{overflow:hidden}.past-events-track{display:flex;gap:18px;transition:transform .5s}.past-event-card{flex:0 0 calc(33.333% - 12px);min-width:260px;overflow:hidden;border-radius:18px;border:1px solid var(--lrborder);background:#0c1422}.past-event-card img{width:100%;aspect-ratio:4/3;object-fit:cover}.past-event-card div{padding:16px}.past-event-card p{color:var(--lrmuted);font-size:.84rem}
 
-body::selection{
-  background:var(--hero-orange);
-  color:#fff;
-}
+/* Modal */
+.event-modal{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:20px}.event-modal.open{display:flex}.event-modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(9px)}.event-modal-card{position:relative;z-index:2;width:min(540px,100%);padding:32px;border-radius:24px;background:linear-gradient(145deg,#111d30,#080f1b);border:1px solid var(--lrborder);box-shadow:0 30px 100px #000;animation:modalUp .35s}.event-modal-close{position:absolute;right:14px;top:12px;border:0;border-radius:50%;width:38px;height:38px;background:rgba(255,255,255,.08);color:#fff;font-size:1.5rem;cursor:pointer}.event-modal-card p{color:var(--lrmuted);line-height:1.7}.event-registration-form{display:grid;gap:8px;margin-top:20px}.event-registration-form input{padding:14px;border-radius:10px;background:#070d17;color:#fff;border:1px solid var(--lrborder)}.event-registration-form button{margin-top:8px;padding:15px;border:0;border-radius:12px;background:linear-gradient(90deg,var(--lrorange),#f59e0b);color:#fff;font-weight:900;cursor:pointer}
 
-/* Make regular content sections follow the hero's dark visual language */
-body > section:not(.hero),
-body > footer{
-  background-color:var(--dark-bg) !important;
-  color:var(--dark-text);
-}
-
-body > section.section-alt{
-  background:
-    linear-gradient(180deg, rgba(31,92,153,.08), rgba(7,11,20,.96)) !important;
-}
-
-body > section#structure,
-body > section#excellence,
-body > section#expansion,
-body > section#identity{
-  background:
-    radial-gradient(circle at 85% 15%, rgba(31,92,153,.11), transparent 25%),
-    linear-gradient(180deg, #080e19, #070b14) !important;
-}
-
-.slide-body p,
-.text-block p,
-.closing p,
-.apply-intro p,
-.supports,
-.lede{
-  color:var(--dark-sub) !important;
-}
-
-h1,h2,h3,h4,
-.slide-body h2,
-.text-block h2,
-.closing h2,
-.apply-intro h2{
-  color:var(--hero-white) !important;
-}
-
-.verse-card,
-.model-item,
-.apply-form,
-.apply-intro,
-.media-frame{
-  background:rgba(14,23,39,.82) !important;
-  border-color:var(--dark-border) !important;
-  box-shadow:0 20px 60px rgba(0,0,0,.22);
-}
-
-.verse-text,
-.model-item{
-  color:var(--dark-text) !important;
-}
-
-.verse-ref,
-.eyebrow{
-  color:var(--hero-orange) !important;
-}
-
-footer{
-  border-top:1px solid var(--dark-border) !important;
-  background:#050811 !important;
-  color:var(--dark-sub) !important;
-}
-
-/* Forms */
-.apply-form input,
-.apply-form select,
-.apply-form textarea{
-  background:#080f1c !important;
-  color:var(--hero-white) !important;
-  border:1px solid rgba(255,255,255,.12) !important;
-}
-
-.apply-form input::placeholder,
-.apply-form textarea::placeholder{
-  color:#6f8097 !important;
-}
-
-/* =========================
-   UPCOMING EVENTS
-   ========================= */
-.events-section{
-  position:relative;
-  overflow:hidden;
-  padding:clamp(80px,10vw,140px) 6vw;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(31,92,153,.16), transparent 28%),
-    radial-gradient(circle at 85% 70%, rgba(249,115,22,.10), transparent 25%),
-    linear-gradient(180deg,#070b14 0%,#0a101c 100%);
-  border-top:1px solid rgba(255,255,255,.06);
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-
-.events-wrap{
-  position:relative;
-  z-index:2;
-  width:min(1180px,100%);
-  margin:0 auto;
-}
-
-.events-heading{
-  max-width:760px;
-  margin:0 auto 48px;
-  text-align:center;
-}
-
-.events-heading .eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  margin-bottom:12px;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  font-size:.76rem;
-  font-weight:800;
-}
-
-.events-heading .eyebrow::before,
-.events-heading .eyebrow::after{
-  content:"";
-  width:28px;
-  height:1px;
-  background:linear-gradient(90deg,var(--hero-orange),var(--hero-blue-bright));
-}
-
-.events-heading h2{
-  margin:0 0 14px;
-  font-size:clamp(2.2rem,5vw,4.2rem);
-  line-height:1;
-  letter-spacing:-.04em;
-}
-
-.events-heading p{
-  margin:0 auto;
-  color:var(--dark-sub);
-  max-width:650px;
-  line-height:1.8;
-}
-
-.events-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
-  gap:24px;
-}
-
-.event-card{
-  position:relative;
-  display:grid;
-  grid-template-columns:112px 1fr;
-  gap:26px;
-  padding:26px;
-  min-height:270px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:24px;
-  background:
-    linear-gradient(145deg,rgba(17,29,48,.96),rgba(8,14,25,.96));
-  box-shadow:0 24px 70px rgba(0,0,0,.30);
-  transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease;
-}
-
-.event-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(120deg,rgba(31,92,153,.12),transparent 42%),
-    radial-gradient(circle at 100% 0%,rgba(249,115,22,.13),transparent 32%);
-}
-
-.event-card::after{
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:4px;
-  height:100%;
-  background:linear-gradient(180deg,var(--hero-orange),var(--hero-blue-bright));
-  transform:scaleY(.25);
-  transform-origin:top;
-  transition:transform .35s ease;
-}
-
-.event-card:hover{
-  transform:translateY(-8px);
-  border-color:rgba(77,163,255,.32);
-  box-shadow:0 30px 80px rgba(0,0,0,.42);
-}
-
-.event-card:hover::after{
-  transform:scaleY(1);
-}
-
-.event-date{
-  position:relative;
-  z-index:1;
-  align-self:start;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  min-height:128px;
-  padding:14px 10px;
-  border-radius:18px;
-  background:
-    linear-gradient(160deg,rgba(31,92,153,.32),rgba(249,115,22,.12));
-  border:1px solid rgba(255,255,255,.10);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
-}
-
-.event-month,
-.event-day{
-  color:#9eb0c6;
-  font-size:.68rem;
-  font-weight:800;
-  letter-spacing:.14em;
-}
-
-.event-date strong{
-  margin:2px 0;
-  color:#fff;
-  font-size:3rem;
-  line-height:1;
-  letter-spacing:-.06em;
-}
-
-.event-content{
-  position:relative;
-  z-index:1;
-}
-
-.event-status{
-  display:inline-flex;
-  margin-bottom:9px;
-  padding:5px 9px;
-  border-radius:999px;
-  color:#ffb77e;
-  background:rgba(249,115,22,.10);
-  border:1px solid rgba(249,115,22,.20);
-  font-size:.63rem;
-  font-weight:900;
-  letter-spacing:.13em;
-}
-
-.event-content h3{
-  margin:0 0 10px;
-  color:#fff !important;
-  font-size:clamp(1.35rem,2.2vw,1.8rem);
-  line-height:1.15;
-}
-
-.event-description{
-  margin:0 0 18px;
-  color:#9aa9bd !important;
-  line-height:1.7;
-}
-
-.event-meta{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px 18px;
-  margin-bottom:20px;
-  color:#b6c3d3;
-  font-size:.82rem;
-}
-
-.event-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:12px;
-  padding:11px 16px;
-  border-radius:999px;
-  color:#fff !important;
-  text-decoration:none;
-  font-size:.8rem;
-  font-weight:800;
-  background:linear-gradient(90deg,var(--hero-blue),#2878c7);
-  border:1px solid rgba(255,255,255,.10);
-  transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
-}
-
-.event-btn:hover{
-  transform:translateX(3px);
-  background:linear-gradient(90deg,var(--hero-orange),#e85e08);
-  box-shadow:0 10px 30px rgba(249,115,22,.20);
-}
-
-.events-glow{
-  position:absolute;
-  width:360px;
-  height:360px;
-  border-radius:50%;
-  filter:blur(90px);
-  pointer-events:none;
-  opacity:.16;
-}
-
-.events-glow-blue{
-  top:-180px;
-  left:-120px;
-  background:var(--hero-blue-bright);
-}
-
-.events-glow-orange{
-  right:-150px;
-  bottom:-180px;
-  background:var(--hero-orange);
-}
-
-@media(max-width:700px){
-  .events-section{
-    padding:70px 20px;
-  }
-
-  .event-card{
-    grid-template-columns:86px 1fr;
-    gap:18px;
-    padding:20px;
-    border-radius:20px;
-  }
-
-  .event-date{
-    min-height:110px;
-  }
-
-  .event-date strong{
-    font-size:2.45rem;
-  }
-
-  .event-meta{
-    flex-direction:column;
-    gap:7px;
-  }
-}
-
-@media(max-width:480px){
-  .event-card{
-    grid-template-columns:1fr;
-  }
-
-  .event-date{
-    width:92px;
-  }
-}
+/* Lively reveal animations */
+.reveal,.slide,.text-block,.apply-wrap,.closing,.model-item{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}.in-view{opacity:1!important;transform:none!important}
+.hero-content>*{animation:heroRise .8s both}.hero-content>*:nth-child(2){animation-delay:.1s}.hero-content>*:nth-child(3){animation-delay:.2s}.hero-content>*:nth-child(4){animation-delay:.3s}
+@keyframes heroRise{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}@keyframes visualEnter{from{opacity:0;transform:translateX(25px)}to{opacity:1;transform:none}}@keyframes modalUp{from{opacity:0;transform:translateY(25px) scale(.97)}to{opacity:1;transform:none}}
+@media(max-width:800px){.event-featured{grid-template-columns:1fr}.event-featured-poster{min-height:360px}.past-event-card{flex-basis:80%}}@media(max-width:560px){.events-section{padding:80px 20px}.event-countdown{grid-template-columns:repeat(2,1fr)}}
 </style>
 
 </head>
@@ -413,7 +69,7 @@ footer{
   <a href="#community" class="nav-link">Community & Growth</a>
   <a href="#stewardship" class="nav-link">Stewardship & Identity</a>
   <a href="#events" class="nav-link">Upcoming Events</a>
-<a href="#model" class="nav-link">Our Biblical Model</a>
+  <a href="#model" class="nav-link">Our Biblical Model</a>
   <a href="#apply" class="nav-link apply-link">Members Application</a>
   <div class="nav-drawer-foot">Living Room Xperience — Worship + Presence First.</div>
 </aside>
@@ -488,6 +144,11 @@ footer{
     </div>
 
     <div class="hero-visual">
+      <div class="hero-event-poster" id="heroEventPoster">
+        <img id="heroPosterImage" src="" alt="Upcoming event poster">
+        <div class="hero-poster-overlay"><span>UPCOMING EVENT</span><strong id="heroPosterTitle"></strong><small>View event details ↗</small></div>
+      </div>
+      <div class="hero-default-visual">
       <div class="visual-glow"></div>
       <div class="visual-ring visual-ring-one"></div>
       <div class="visual-ring visual-ring-two"></div>
@@ -510,6 +171,7 @@ footer{
           <small>OUR FOUNDATION</small>
           <strong>Presence First</strong>
         </div>
+      </div>
       </div>
     </div>
   </div>
@@ -880,75 +542,41 @@ and our songwriting camps foster collaboration among artists who share this visi
 
 <!-- UPCOMING EVENTS -->
 <section class="events-section" id="events">
-  <div class="events-glow events-glow-blue"></div>
-  <div class="events-glow events-glow-orange"></div>
-
   <div class="events-wrap">
-    <div class="events-heading">
-      <span class="eyebrow">What's Coming</span>
-      <h2>Upcoming Events</h2>
-      <p>Stay connected with the next Living Room Xperience gatherings, worship nights and community moments.</p>
+    <div class="events-heading reveal">
+      <span class="eyebrow">Stay Connected</span>
+      <h2>Events & Gatherings</h2>
+      <p>Join us as we worship, encounter God and grow together in community.</p>
     </div>
-
-    <!--
-      TO ADD / EDIT AN EVENT:
-      Duplicate the .event-card below for additional events.
-      Change the date, title, description, location and button link.
-    -->
-    <div class="events-grid">
-
-      <article class="event-card">
-        <div class="event-date">
-          <span class="event-month">MONTH</span>
-          <strong>00</strong>
-          <span class="event-day">DAY</span>
-        </div>
-
-        <div class="event-content">
-          <span class="event-status">UPCOMING</span>
-          <h3>Your Next Event Title</h3>
-          <p class="event-description">
-            Add a short description of your upcoming worship gathering, event or special session here.
-          </p>
-
-          <div class="event-meta">
-            <span>◷ 00:00 PM</span>
-            <span>⌖ Your Location</span>
-          </div>
-
-          <a href="#apply" class="event-btn">
-            <span>Learn More</span>
-            <span>↗</span>
-          </a>
-        </div>
-      </article>
-
-      <!-- Duplicate this card when you have another event.
-      <article class="event-card">
-        <div class="event-date">
-          <span class="event-month">OCT</span>
-          <strong>24</strong>
-          <span class="event-day">SAT</span>
-        </div>
-        <div class="event-content">
-          <span class="event-status">UPCOMING</span>
-          <h3>Another Living Room Xperience</h3>
-          <p class="event-description">Event description goes here.</p>
-          <div class="event-meta">
-            <span>◷ 4:00 PM</span>
-            <span>⌖ Nairobi</span>
-          </div>
-          <a href="#apply" class="event-btn">
-            <span>Learn More</span>
-            <span>↗</span>
-          </a>
-        </div>
-      </article>
-      -->
-
+    <div id="eventsUpcoming"></div>
+    <div id="eventsEmpty" class="events-empty reveal" hidden>
+      <div>✦</div><h3>No Upcoming Events Yet</h3>
+      <p>Please check back soon for the next Living Room Xperience.</p>
+    </div>
+    <div id="pastEventsSection" class="past-events-section" hidden>
+      <div class="past-events-head"><div><span class="eyebrow">Remember</span><h3>Past Xperiences</h3></div>
+      <div class="slider-controls"><button id="pastPrev">←</button><button id="pastNext">→</button></div></div>
+      <div class="past-slider-window"><div id="pastEventsTrack" class="past-events-track"></div></div>
     </div>
   </div>
 </section>
+
+<div class="event-modal" id="eventModal" aria-hidden="true">
+  <div class="event-modal-backdrop" data-close-event-modal></div>
+  <div class="event-modal-card">
+    <button class="event-modal-close" data-close-event-modal>×</button>
+    <span class="eyebrow">Reserve Your Place</span>
+    <h3 id="eventModalTitle">Register for the Event</h3>
+    <p id="eventModalSubtitle"></p>
+    <form id="eventRegistrationForm" class="event-registration-form">
+      <input type="hidden" id="registrationEventName" name="event">
+      <label>Full Name</label><input name="name" required placeholder="Your full name">
+      <label>Email Address</label><input name="email" type="email" required placeholder="you@example.com">
+      <label>Phone Number</label><input name="phone" placeholder="+254 7xx xxx xxx">
+      <button type="submit">Register Now ↗</button>
+    </form>
+  </div>
+</div>
 
 <!-- CLOSING: OUR BIBLICAL MODEL -->
 <section class="hero closing-wrap" id="model">
@@ -1093,6 +721,47 @@ and our songwriting camps foster collaboration among artists who share this visi
   }, { threshold: 0.05 });
 
   observer.observe(hero);
+})();
+</script>
+
+
+<script>
+/* EDIT THIS OBJECT WHEN YOU HAVE AN EVENT */
+const livingRoomEvents = {
+  upcoming:{
+    enabled:true,
+    title:"Your Upcoming Concert",
+    welcome:"Welcome to our next Living Room Xperience. Come expecting an intimate atmosphere of worship, prayer, the Word and genuine fellowship. We are excited to experience this moment with you.",
+    date:"2026-12-31T18:00:00+03:00",
+    displayDate:"31 December 2026",
+    time:"6:00 PM",
+    location:"Your Concert Venue",
+    poster:"images/upcoming-event-poster.jpg"
+  },
+  pastEvents:[
+    // {title:"Previous Event",date:"24 August 2026",description:"A past worship experience.",poster:"images/past-event.jpg"}
+  ]
+};
+
+(() => {
+ const u=livingRoomEvents.upcoming, now=new Date(), valid=u&&u.enabled&&u.date&&new Date(u.date)>now;
+ const hero=document.querySelector('.hero-visual'), poster=document.getElementById('heroPosterImage'), ptitle=document.getElementById('heroPosterTitle');
+ const upcoming=document.getElementById('eventsUpcoming'), empty=document.getElementById('eventsEmpty');
+ if(valid){
+   hero.classList.add('hero-event-active'); poster.src=u.poster; ptitle.textContent=u.title;
+   document.getElementById('heroEventPoster').onclick=()=>document.getElementById('events').scrollIntoView({behavior:'smooth'});
+   upcoming.innerHTML=`<article class="event-featured reveal"><div class="event-featured-poster"><img src="${u.poster}" alt="${u.title} poster"></div><div class="event-featured-content"><span class="event-kicker">NEXT LIVING ROOM XPERIENCE</span><h3>${u.title}</h3><p class="event-welcome">${u.welcome}</p><div class="event-details"><span>◷ ${u.time}</span><span>◉ ${u.displayDate}</span><span>⌖ ${u.location}</span></div><div class="event-countdown"><div class="count-box"><strong id="d">00</strong><small>DAYS</small></div><div class="count-box"><strong id="h">00</strong><small>HOURS</small></div><div class="count-box"><strong id="m">00</strong><small>MINUTES</small></div><div class="count-box"><strong id="s">00</strong><small>SECONDS</small></div></div><div class="event-actions"><button class="event-register-btn" id="openReg">Register for the Event ↗</button><a href="#events" class="event-view-btn">Event Details</a></div></div></article>`;
+   const target=new Date(u.date), tick=()=>{let x=Math.max(0,target-new Date());let vals=[Math.floor(x/864e5),Math.floor(x%864e5/36e5),Math.floor(x%36e5/6e4),Math.floor(x%6e4/1e3)];['d','h','m','s'].forEach((id,i)=>document.getElementById(id).textContent=String(vals[i]).padStart(2,'0'))};tick();setInterval(tick,1000);
+   document.getElementById('registrationEventName').value=u.title;document.getElementById('eventModalTitle').textContent='Register for '+u.title;document.getElementById('eventModalSubtitle').textContent=u.welcome;
+   document.getElementById('openReg').onclick=()=>{document.getElementById('eventModal').classList.add('open');document.body.style.overflow='hidden'};
+ }else empty.hidden=false;
+
+ const past=livingRoomEvents.pastEvents||[], section=document.getElementById('pastEventsSection'), track=document.getElementById('pastEventsTrack');
+ if(past.length){section.hidden=false;track.innerHTML=past.map(e=>`<article class="past-event-card"><img src="${e.poster}" alt="${e.title}"><div><h4>${e.title}</h4><p>${e.date}</p><p>${e.description||''}</p></div></article>`).join('');let i=0;const move=()=>{let c=track.children[0];if(c)track.style.transform=`translateX(${-i*(c.getBoundingClientRect().width+18)}px)`};document.getElementById('pastNext').onclick=()=>{i=Math.min(i+1,past.length-1);move()};document.getElementById('pastPrev').onclick=()=>{i=Math.max(0,i-1);move()}}
+
+ const modal=document.getElementById('eventModal');document.querySelectorAll('[data-close-event-modal]').forEach(x=>x.onclick=()=>{modal.classList.remove('open');document.body.style.overflow=''});document.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.remove('open');document.body.style.overflow=''}});
+ document.getElementById('eventRegistrationForm').onsubmit=e=>{e.preventDefault();let b=e.currentTarget.querySelector('button');b.textContent='Registration received ✓';b.disabled=true};
+ const items=document.querySelectorAll('.reveal,.slide,.text-block,.apply-wrap,.closing,.model-item');const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');io.unobserve(e.target)}}),{threshold:.12});items.forEach(x=>io.observe(x));
 })();
 </script>
 
