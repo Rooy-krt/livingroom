@@ -8,6 +8,389 @@
 
 
   <link rel="stylesheet" href="css/style.css" />
+
+<style id="dark-theme-and-events">
+:root{
+  --dark-bg:#070b14;
+  --dark-bg-2:#0b1220;
+  --dark-card:#0e1727;
+  --dark-card-2:#111d30;
+  --hero-blue:#1f5c99;
+  --hero-blue-bright:#4da3ff;
+  --hero-orange:#f97316;
+  --hero-orange-bright:#ff9a3d;
+  --hero-white:#f8fafc;
+  --dark-text:#e8eef7;
+  --dark-sub:#9aa9bd;
+  --dark-border:rgba(255,255,255,.09);
+}
+
+/* Overall page: dark, premium and visually connected to the hero */
+html{
+  scroll-behavior:smooth;
+  background:var(--dark-bg);
+}
+
+body{
+  background:
+    radial-gradient(circle at 8% 18%, rgba(31,92,153,.13), transparent 28%),
+    radial-gradient(circle at 92% 55%, rgba(249,115,22,.08), transparent 26%),
+    var(--dark-bg) !important;
+  color:var(--dark-text) !important;
+}
+
+body::selection{
+  background:var(--hero-orange);
+  color:#fff;
+}
+
+/* Make regular content sections follow the hero's dark visual language */
+body > section:not(.hero),
+body > footer{
+  background-color:var(--dark-bg) !important;
+  color:var(--dark-text);
+}
+
+body > section.section-alt{
+  background:
+    linear-gradient(180deg, rgba(31,92,153,.08), rgba(7,11,20,.96)) !important;
+}
+
+body > section#structure,
+body > section#excellence,
+body > section#expansion,
+body > section#identity{
+  background:
+    radial-gradient(circle at 85% 15%, rgba(31,92,153,.11), transparent 25%),
+    linear-gradient(180deg, #080e19, #070b14) !important;
+}
+
+.slide-body p,
+.text-block p,
+.closing p,
+.apply-intro p,
+.supports,
+.lede{
+  color:var(--dark-sub) !important;
+}
+
+h1,h2,h3,h4,
+.slide-body h2,
+.text-block h2,
+.closing h2,
+.apply-intro h2{
+  color:var(--hero-white) !important;
+}
+
+.verse-card,
+.model-item,
+.apply-form,
+.apply-intro,
+.media-frame{
+  background:rgba(14,23,39,.82) !important;
+  border-color:var(--dark-border) !important;
+  box-shadow:0 20px 60px rgba(0,0,0,.22);
+}
+
+.verse-text,
+.model-item{
+  color:var(--dark-text) !important;
+}
+
+.verse-ref,
+.eyebrow{
+  color:var(--hero-orange) !important;
+}
+
+footer{
+  border-top:1px solid var(--dark-border) !important;
+  background:#050811 !important;
+  color:var(--dark-sub) !important;
+}
+
+/* Forms */
+.apply-form input,
+.apply-form select,
+.apply-form textarea{
+  background:#080f1c !important;
+  color:var(--hero-white) !important;
+  border:1px solid rgba(255,255,255,.12) !important;
+}
+
+.apply-form input::placeholder,
+.apply-form textarea::placeholder{
+  color:#6f8097 !important;
+}
+
+/* =========================
+   UPCOMING EVENTS
+   ========================= */
+.events-section{
+  position:relative;
+  overflow:hidden;
+  padding:clamp(80px,10vw,140px) 6vw;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(31,92,153,.16), transparent 28%),
+    radial-gradient(circle at 85% 70%, rgba(249,115,22,.10), transparent 25%),
+    linear-gradient(180deg,#070b14 0%,#0a101c 100%);
+  border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.events-wrap{
+  position:relative;
+  z-index:2;
+  width:min(1180px,100%);
+  margin:0 auto;
+}
+
+.events-heading{
+  max-width:760px;
+  margin:0 auto 48px;
+  text-align:center;
+}
+
+.events-heading .eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-size:.76rem;
+  font-weight:800;
+}
+
+.events-heading .eyebrow::before,
+.events-heading .eyebrow::after{
+  content:"";
+  width:28px;
+  height:1px;
+  background:linear-gradient(90deg,var(--hero-orange),var(--hero-blue-bright));
+}
+
+.events-heading h2{
+  margin:0 0 14px;
+  font-size:clamp(2.2rem,5vw,4.2rem);
+  line-height:1;
+  letter-spacing:-.04em;
+}
+
+.events-heading p{
+  margin:0 auto;
+  color:var(--dark-sub);
+  max-width:650px;
+  line-height:1.8;
+}
+
+.events-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+  gap:24px;
+}
+
+.event-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:112px 1fr;
+  gap:26px;
+  padding:26px;
+  min-height:270px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:24px;
+  background:
+    linear-gradient(145deg,rgba(17,29,48,.96),rgba(8,14,25,.96));
+  box-shadow:0 24px 70px rgba(0,0,0,.30);
+  transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease;
+}
+
+.event-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(120deg,rgba(31,92,153,.12),transparent 42%),
+    radial-gradient(circle at 100% 0%,rgba(249,115,22,.13),transparent 32%);
+}
+
+.event-card::after{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:4px;
+  height:100%;
+  background:linear-gradient(180deg,var(--hero-orange),var(--hero-blue-bright));
+  transform:scaleY(.25);
+  transform-origin:top;
+  transition:transform .35s ease;
+}
+
+.event-card:hover{
+  transform:translateY(-8px);
+  border-color:rgba(77,163,255,.32);
+  box-shadow:0 30px 80px rgba(0,0,0,.42);
+}
+
+.event-card:hover::after{
+  transform:scaleY(1);
+}
+
+.event-date{
+  position:relative;
+  z-index:1;
+  align-self:start;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:128px;
+  padding:14px 10px;
+  border-radius:18px;
+  background:
+    linear-gradient(160deg,rgba(31,92,153,.32),rgba(249,115,22,.12));
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.event-month,
+.event-day{
+  color:#9eb0c6;
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:.14em;
+}
+
+.event-date strong{
+  margin:2px 0;
+  color:#fff;
+  font-size:3rem;
+  line-height:1;
+  letter-spacing:-.06em;
+}
+
+.event-content{
+  position:relative;
+  z-index:1;
+}
+
+.event-status{
+  display:inline-flex;
+  margin-bottom:9px;
+  padding:5px 9px;
+  border-radius:999px;
+  color:#ffb77e;
+  background:rgba(249,115,22,.10);
+  border:1px solid rgba(249,115,22,.20);
+  font-size:.63rem;
+  font-weight:900;
+  letter-spacing:.13em;
+}
+
+.event-content h3{
+  margin:0 0 10px;
+  color:#fff !important;
+  font-size:clamp(1.35rem,2.2vw,1.8rem);
+  line-height:1.15;
+}
+
+.event-description{
+  margin:0 0 18px;
+  color:#9aa9bd !important;
+  line-height:1.7;
+}
+
+.event-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px 18px;
+  margin-bottom:20px;
+  color:#b6c3d3;
+  font-size:.82rem;
+}
+
+.event-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  padding:11px 16px;
+  border-radius:999px;
+  color:#fff !important;
+  text-decoration:none;
+  font-size:.8rem;
+  font-weight:800;
+  background:linear-gradient(90deg,var(--hero-blue),#2878c7);
+  border:1px solid rgba(255,255,255,.10);
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease;
+}
+
+.event-btn:hover{
+  transform:translateX(3px);
+  background:linear-gradient(90deg,var(--hero-orange),#e85e08);
+  box-shadow:0 10px 30px rgba(249,115,22,.20);
+}
+
+.events-glow{
+  position:absolute;
+  width:360px;
+  height:360px;
+  border-radius:50%;
+  filter:blur(90px);
+  pointer-events:none;
+  opacity:.16;
+}
+
+.events-glow-blue{
+  top:-180px;
+  left:-120px;
+  background:var(--hero-blue-bright);
+}
+
+.events-glow-orange{
+  right:-150px;
+  bottom:-180px;
+  background:var(--hero-orange);
+}
+
+@media(max-width:700px){
+  .events-section{
+    padding:70px 20px;
+  }
+
+  .event-card{
+    grid-template-columns:86px 1fr;
+    gap:18px;
+    padding:20px;
+    border-radius:20px;
+  }
+
+  .event-date{
+    min-height:110px;
+  }
+
+  .event-date strong{
+    font-size:2.45rem;
+  }
+
+  .event-meta{
+    flex-direction:column;
+    gap:7px;
+  }
+}
+
+@media(max-width:480px){
+  .event-card{
+    grid-template-columns:1fr;
+  }
+
+  .event-date{
+    width:92px;
+  }
+}
+</style>
+
 </head>
 <body>
 
@@ -29,7 +412,8 @@
   <a href="#develop-people" class="nav-link">Growing People & Sound</a>
   <a href="#community" class="nav-link">Community & Growth</a>
   <a href="#stewardship" class="nav-link">Stewardship & Identity</a>
-  <a href="#model" class="nav-link">Our Biblical Model</a>
+  <a href="#events" class="nav-link">Upcoming Events</a>
+<a href="#model" class="nav-link">Our Biblical Model</a>
   <a href="#apply" class="nav-link apply-link">Members Application</a>
   <div class="nav-drawer-foot">Living Room Xperience — Worship + Presence First.</div>
 </aside>
@@ -489,6 +873,79 @@ and our songwriting camps foster collaboration among artists who share this visi
        and we remain vigilant about keeping our focus on God's approval rather than human acclaim. This is the foundation upon which everything else is built.
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- UPCOMING EVENTS -->
+<section class="events-section" id="events">
+  <div class="events-glow events-glow-blue"></div>
+  <div class="events-glow events-glow-orange"></div>
+
+  <div class="events-wrap">
+    <div class="events-heading">
+      <span class="eyebrow">What's Coming</span>
+      <h2>Upcoming Events</h2>
+      <p>Stay connected with the next Living Room Xperience gatherings, worship nights and community moments.</p>
+    </div>
+
+    <!--
+      TO ADD / EDIT AN EVENT:
+      Duplicate the .event-card below for additional events.
+      Change the date, title, description, location and button link.
+    -->
+    <div class="events-grid">
+
+      <article class="event-card">
+        <div class="event-date">
+          <span class="event-month">MONTH</span>
+          <strong>00</strong>
+          <span class="event-day">DAY</span>
+        </div>
+
+        <div class="event-content">
+          <span class="event-status">UPCOMING</span>
+          <h3>Your Next Event Title</h3>
+          <p class="event-description">
+            Add a short description of your upcoming worship gathering, event or special session here.
+          </p>
+
+          <div class="event-meta">
+            <span>◷ 00:00 PM</span>
+            <span>⌖ Your Location</span>
+          </div>
+
+          <a href="#apply" class="event-btn">
+            <span>Learn More</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- Duplicate this card when you have another event.
+      <article class="event-card">
+        <div class="event-date">
+          <span class="event-month">OCT</span>
+          <strong>24</strong>
+          <span class="event-day">SAT</span>
+        </div>
+        <div class="event-content">
+          <span class="event-status">UPCOMING</span>
+          <h3>Another Living Room Xperience</h3>
+          <p class="event-description">Event description goes here.</p>
+          <div class="event-meta">
+            <span>◷ 4:00 PM</span>
+            <span>⌖ Nairobi</span>
+          </div>
+          <a href="#apply" class="event-btn">
+            <span>Learn More</span>
+            <span>↗</span>
+          </a>
+        </div>
+      </article>
+      -->
+
     </div>
   </div>
 </section>
